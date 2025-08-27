@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Página Web con React</title>
+    <!-- Incluye React y ReactDOM desde CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Incluye Babel para transformar JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Incluye Tailwind CSS para estilizar -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- El "root" de tu aplicación de React -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Un componente de React simple para un botón
+        const Button = ({ children, onClick }) => {
+            return (
+                <button
+                    onClick={onClick}
+                    className="
+                        bg-blue-600
+                        hover:bg-blue-700
+                        text-white
+                        font-bold
+                        py-3
+                        px-6
+                        rounded-full
+                        shadow-lg
+                        transform
+                        hover:scale-105
+                        transition-all
+                        duration-300
+                        ease-in-out
+                        focus:outline-none
+                        focus:ring-4
+                        focus:ring-blue-500
+                        focus:ring-opacity-50
+                        w-full md:w-auto
+                    "
+                >
+                    {children}
+                </button>
+            );
+        };
+
+        // El componente principal de la aplicación
+        const App = () => {
+            const [count, setCount] = React.useState(0);
+
+            const handleClick = () => {
+                setCount(count + 1);
+            };
+
+            return (
+                <div className="
+                    bg-white
+                    rounded-3xl
+                    shadow-2xl
+                    p-8
+                    md:p-12
+                    max-w-md
+                    mx-auto
+                    text-center
+                    space-y-6
+                    border-t-8
+                    border-blue-600
+                ">
+                    <h1 className="
+                        text-3xl md:text-4xl
+                        font-bold
+                        text-gray-800
+                    ">
+                        ¡Hola, Mundo!
+                    </h1>
+                    <p className="
+                        text-md md:text-lg
+                        text-gray-600
+                    ">
+                        Esta es mi primera aplicación web con React.
+                    </p>
+                    <div className="
+                        bg-blue-100
+                        text-blue-800
+                        text-4xl md:text-5xl
+                        font-extrabold
+                        py-6
+                        rounded-xl
+                        select-none
+                    ">
+                        Contador: {count}
+                    </div>
+                    <Button onClick={handleClick}>
+                        Haz clic aquí
+                    </Button>
+                </div>
+            );
+        };
+
+        // Renderiza el componente App en el DOM
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+
+</body>
+</html>
